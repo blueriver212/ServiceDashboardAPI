@@ -9,20 +9,18 @@ const bodyParser = require('body-parser');
 payments.use(bodyParser.urlencoded({ extended: true}));
 
 payments.get('/payments', function(req, res) {
-    res.send('hello world');
-});
-
-payments.get('/payments/DD', function(req, res) {
     // generate a random number between 1 and 10
-    var DD_payments = Math.floor(Math.random() * 10);
+    var DD_payments = Math.floor(Math.random() * 100);
+    var IOD_payments = Math.floor(Math.random() * 100);
 
         
-    res.json( {val: DD_payments} );
+    res.json( 
+        {
+        "DD": DD_payments,
+        "IOD": IOD_payments
+        } 
+        );
     //res.send('hello world');
-});
-
-payments.get('/payments/IOD', function(req, res) {
-    res.send('hello world');
 });
 
 module.exports = payments;
